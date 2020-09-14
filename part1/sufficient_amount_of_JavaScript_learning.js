@@ -123,3 +123,79 @@ function product(a, b) {
 
 const result2 = product(2, 6)
 
+
+
+console.log("")
+console.log("")
+
+
+
+// ---------------------- 5.Object methods and "this"s ---------------------- //
+const arto1 = {
+    name: 'Arto Hellas',
+    age: 35,
+    education: 'PhD',
+    greet: function () {
+        console.log('hello, my name is ' + this.name)
+    },
+}
+
+arto1.greet()
+
+const arto2 = {
+    name: 'Arto Hellas',
+    age: 35,
+    education: 'PhD',
+    greet: function () {
+        console.log('hello, my name is ' + this.name)
+    },
+}
+
+arto2.growOlder = function () {
+    this.age += 1
+}
+
+console.log(arto2.age)   // 35 is printed
+arto2.growOlder()
+console.log(arto2.age)   // 36 is printed
+
+const arto3 = {
+    name: 'Arto Hellas',
+    age: 35,
+    education: 'PhD',
+    greet: function () {
+        console.log('hello, my name is ' + this.name)
+    },
+    doAddition: function (a, b) {
+        console.log(a + b)
+    },
+}
+
+arto3.doAddition(1, 4)        // 5 is printed
+
+const referenceToAddition = arto3.doAddition
+referenceToAddition(10, 15)   // 25 is printed
+
+
+
+console.log("")
+console.log("")
+
+
+
+// ---------------------- 6.Classes ---------------------- //
+class Person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+    greet() {
+        console.log('hello, my name is ' + this.name)
+    }
+}
+
+const adam = new Person('Adam Ondra', 35)
+adam.greet()
+
+const janja = new Person('Janja Garnbret', 22)
+janja.greet()
