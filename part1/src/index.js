@@ -5,6 +5,16 @@ const App = (props) => {
   const [votes, setVotes] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })
   const [selected, setSelected] = useState(0)
 
+  const GetHighestVotedAncedotesIndex = () => {
+    let index = 0
+    for (let i = 0; i < 6; i++) {
+      if (votes[i] > votes[index]) {
+        index = i
+      }
+    }
+    return index
+  }
+
   const VoteForAncedote = () => {
     let newDict = {...votes}
     newDict[selected]++
@@ -17,10 +27,14 @@ const App = (props) => {
 
   return (
     <div>
+      <h1>Anecdote of the Day</h1>
       <div>{props.anecdotes[selected]}</div>
       <div>has {votes[selected]} votes</div>
       <button onClick={() => VoteForAncedote()}>vote</button>
       <button onClick={() => GetRandomAncedote()}>next ancedots</button>
+      <h1>Anecdote with most votes</h1>
+      <div>{props.anecdotes[GetHighestVotedAncedotesIndex()]}</div>
+      <div>has {votes[GetHighestVotedAncedotesIndex()]} votes</div>
     </div>
   )
 }
