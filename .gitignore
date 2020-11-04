@@ -1,2 +1,3 @@
-#Ignoring Visual Studio Code Project Settings
+#Ignoring IDE Project Settings
 .vscode*
+.idea*
